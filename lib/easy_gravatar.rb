@@ -1,5 +1,6 @@
 require "easy_gravatar/version"
+require "easy_gravatar/json_parser"
 
-module EasyGravatar
+class Gravatar
   # Your code goes here...
 end

@@ -1,0 +1,3 @@
+class GravatarJsonParser
+  # Your code goes here...
+end
