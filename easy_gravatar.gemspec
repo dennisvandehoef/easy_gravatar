@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = EasyGravatar::VERSION
   spec.authors       = ["Dennis van de Hoef"]
   spec.email         = ["dennisvdhoef@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{A simple gem that gives you -all- the data avalabile for the user on gravatar.com}
+  spec.description   = %q{Gravatar.com, mainly known for its avatar hosting. But users can store more than only an avatar at gravatar. This gem alsow allows you to easialy access it all (accounts at other social networks, more photo's, the name of the user, saved websites, cryptocurrency accounts and more)}
   spec.homepage      = ""
   spec.license       = "MIT"
 
