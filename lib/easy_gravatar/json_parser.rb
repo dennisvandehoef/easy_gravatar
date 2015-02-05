@@ -15,6 +15,7 @@ module EasyGravatar
 
     def parse
       hash = strip_basic_fields
+      hash.merge! strip_name_data
       hash.merge! strip_ims
       hash.merge! strip_phoneNumbers
       hash.merge! strip_currency
@@ -44,6 +45,17 @@ module EasyGravatar
 
     def strip_currency
       strip_basic_group('currency')
+    end
+
+    def strip_name_data
+      hash = Hash.new
+      return hash unless @json['name']
+      @json['name'].keys.each do |key|
+        new_key = key
+        new_key = "#{key}Name" if key == 'formatted'
+        hash[new_key.to_sym] = @json['name'][key]
+      end
+      hash
     end
 
     def strip_basic_group(group)
