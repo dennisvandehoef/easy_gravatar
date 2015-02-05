@@ -15,7 +15,8 @@ module EasyGravatar
 
     def parse
       hash = strip_basic_fields
-      hash.merge strip_currency
+      hash.merge! strip_ims
+      hash.merge! strip_currency
     end
 
     private
@@ -32,13 +33,21 @@ module EasyGravatar
       hash
     end
 
-    def strip_currency
-      hash = Hash.new
-      return hash unless @json['currency']
+    def strip_ims
+      strip_basic_group('ims')
+    end
 
-      hash[:currency] = Hash.new
-      @json['currency'].each do |j|
-        hash[:currency][j['type'].to_sym] = j['value']
+    def strip_currency
+      strip_basic_group('currency')
+    end
+
+    def strip_basic_group(group)
+      hash = Hash.new
+      return hash unless @json[group]
+
+      hash[group.to_sym] = Hash.new
+      @json[group].each do |j|
+        hash[group.to_sym][j['type'].to_sym] = j['value']
       end
       hash
     end
