@@ -1,4 +1,5 @@
 require 'spec_helper'
-describe Gravatar do
+
+describe EasyGravatar::Gravatar do
   pending "write it"
 end
