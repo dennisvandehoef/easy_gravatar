@@ -25,7 +25,7 @@ module EasyGravatar
     end
 
     def strip_basic_fields
-      hash = {}
+      hash = Hash.new
       @json.keys.each do |key|
         hash[key.to_sym] = @json[key] if @json[key].class == String
       end
