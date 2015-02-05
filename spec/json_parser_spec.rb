@@ -6,23 +6,27 @@ describe GravatarJsonParser do
     @parsed = GravatarJsonParser.new(j).parse
   end
 
+  it 'returns a Hash' do
+    expect(@parsed.class).to .eq(Hash)
+  end
+
   it 'removes the first layers' do
-    expect(@parsed['id']).to eq('67473678')
+    expect(@parsed[:id]).to eq('67473678')
   end
 
   it 'adds name data to the first layer' do
-    expect(@parsed['givenName']).to eq('Dennis')
-    expect(@parsed['familyName']).to eq('van de Hoef')
-    expect(@parsed['formattedName']).to eq('Dennis van de Hoef')
+    expect(@parsed[:givenName]).to eq('Dennis')
+    expect(@parsed[:familyName]).to eq('van de Hoef')
+    expect(@parsed[:formattedName]).to eq('Dennis van de Hoef')
   end
 
   it 'adds the backgroundColor to the first layer' do
-    expect(@parsed['profileBackgroundColor']).to eq('#82cef7')
+    expect(@parsed[:profileBackgroundColor]).to eq('#82cef7')
   end
 
   it 'reorganises the currencies' do
-    expect(@parsed['currency']['bitcoin']).to eq('14Z6yNjuqnTRevmqe5jHiNYFWfvsRaFBGm')
-    expect(@parsed['currency']['litecoin']).to eq('LgzvJPZEiZynEs2JFdoqRSwgMELVmRpvb8')
-    expect(@parsed['currency']['dogecoin']).to eq('DEE13B32ZHfWu4EYuZUHYRdVF3DXi42ECg')
+    expect(@parsed[:currency][:bitcoin]).to eq('14Z6yNjuqnTRevmqe5jHiNYFWfvsRaFBGm')
+    expect(@parsed[:currency][:litecoin]).to eq('LgzvJPZEiZynEs2JFdoqRSwgMELVmRpvb8')
+    expect(@parsed[:currency][:dogecoin]).to eq('DEE13B32ZHfWu4EYuZUHYRdVF3DXi42ECg')
   end
 end
