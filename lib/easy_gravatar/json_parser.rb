@@ -16,6 +16,7 @@ module EasyGravatar
     def parse
       hash = strip_basic_fields
       hash.merge! strip_ims
+      hash.merge! strip_phoneNumbers
       hash.merge! strip_currency
     end
 
@@ -35,6 +36,10 @@ module EasyGravatar
 
     def strip_ims
       strip_basic_group('ims')
+    end
+
+    def strip_phoneNumbers
+      strip_basic_group('phoneNumbers')
     end
 
     def strip_currency
