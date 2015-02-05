@@ -21,12 +21,12 @@ describe EasyGravatar::JsonParser do
   end
 
   it 'reorganises the phone numbers' do
-    expect(@parsed[:phoneNumbers][:mobile]).to ec('3453574657')
+    expect(@parsed[:phoneNumbers][:mobile]).to eq('3453574657')
   end
 
   it 'reorganises the ims' do
-    expect(@parsed[:ims][:gtalk]).to ec('dsfhgzgdf')
-    expect(@parsed[:ims][:skype]).to ec('foobar')
+    expect(@parsed[:ims][:gtalk]).to eq('dsfhgzgdf')
+    expect(@parsed[:ims][:skype]).to eq('foobar')
   end
 
   it 'adds the email to the first layer' do
