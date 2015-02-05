@@ -15,7 +15,7 @@ module EasyGravatar
 
     def parse
       hash = strip_basic_fields
-      hash
+      hash.merge strip_currency
     end
 
     private
@@ -28,6 +28,17 @@ module EasyGravatar
       hash = Hash.new
       @json.keys.each do |key|
         hash[key.to_sym] = @json[key] if @json[key].class == String
+      end
+      hash
+    end
+
+    def strip_currency
+      hash = Hash.new
+      return hash unless @json['currency']
+
+      hash[:currency] = Hash.new
+      @json['currency'].each do |j|
+        hash[:currency][j['type'].to_sym] = j['value']
       end
       hash
     end
