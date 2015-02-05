@@ -6,10 +6,6 @@ describe EasyGravatar::JsonParser do
     @parsed = EasyGravatar::JsonParser.for(j).parse
   end
 
-  it 'returns a Hash' do
-    expect(@parsed.class).to .eq(Hash)
-  end
-
   it 'removes the first layers' do
     expect(@parsed[:id]).to eq('67473678')
   end
