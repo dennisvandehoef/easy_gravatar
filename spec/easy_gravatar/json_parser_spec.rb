@@ -21,10 +21,15 @@ describe EasyGravatar::JsonParser do
   end
 
   it 'reorganises the phone numbers' do
+    expect(@parsed[:phoneNumbers][:home]).to eq('0123456789')
+    expect(@parsed[:phoneNumbers][:work]).to eq('9876543210')
     expect(@parsed[:phoneNumbers][:mobile]).to eq('0147258369')
   end
 
   it 'reorganises the ims' do
+    expect(@parsed[:ims][:aim]).to eq('fakeAim')
+    expect(@parsed[:ims][:yahoo]).to eq('FakeYahoo')
+    expect(@parsed[:ims][:icq]).to eq('fakeICQ')
     expect(@parsed[:ims][:gtalk]).to eq('fakeGtalk')
     expect(@parsed[:ims][:skype]).to eq('fakeSkype')
   end
