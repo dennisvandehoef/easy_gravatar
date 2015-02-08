@@ -17,6 +17,7 @@ module EasyGravatar
       hash.merge! strip_ims
       hash.merge! strip_profileBackground
       hash.merge! strip_phoneNumbers
+      hash.merge! strip_emails
       hash.merge! strip_currency
     end
 
@@ -61,6 +62,17 @@ module EasyGravatar
       hash = Hash.new
       return hash unless @json['profileBackground']
       hash[:profileBackgroundColor] = @json['profileBackground']['color']
+      hash
+    end
+
+    def strip_emails
+      hash = Hash.new
+      return hash unless @json['emails']
+      array = Array.new
+      @json['emails'].each do |h|
+        array.push(h['value'])
+      end
+      hash[:email] = array
       hash
     end
 
