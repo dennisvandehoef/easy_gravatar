@@ -8,6 +8,14 @@ describe EasyGravatar::JsonParser do
 
   it 'removes the first layers' do
     expect(@parsed[:id]).to eq('67473678')
+    expect(@parsed[:hash]).to eq('274096d1a68cf5740240b6ffb789c5c7')
+    expect(@parsed[:requestHash]).to eq('18d25970791c7cfaa521824b83600570')
+    expect(@parsed[:profileUrl]).to eq('http://gravatar.com/dvdhoef88')
+    expect(@parsed[:preferredUsername]).to eq('dvdhoef88')
+    expect(@parsed[:thumbnailUrl]).to eq('https://secure.gravatar.com/avatar/274096d1a68cf5740240b6ffb789c5c7')
+    expect(@parsed[:displayName]).to eq('dvdhoef88')
+    expect(@parsed[:aboutMe]).to eq('A dutch man living in Berlin')
+    expect(@parsed[:currentLocation]).to eq('Berlin')
   end
 
   it 'adds name data to the first layer' do
