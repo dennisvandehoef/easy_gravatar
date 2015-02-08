@@ -12,14 +12,37 @@ module EasyGravatar
     end
 
     def hash
-      @hash ||= get_hash
+      @hash ||= EasyGravatar::JsonParser.for(get_hash).parse
     end
 
-    private
+    def full_name
+      get_value :formattedName
+    end
+
 
     def get_hash
-      url = "https://www.gravatar.com/#{@md5}.json"
-      Net::HTTP.get(URI.parse(url))
+      Net::HTTP.get(URI.parse(profile_url))
+    end
+
+    def get_value(key, subkey = nil)
+      return '' unless hash[key]
+      return '' if subkey and !hash[key][subkey]
+
+      return hash[key][subkey] if subkey
+
+      hash[key]
+    end
+
+    def profile_url(url = "https://www.gravatar.com/#{@md5}.json")
+      response = Net::HTTP.get_response(URI.parse(url))
+
+      case response
+      when Net::HTTPSuccess then
+        url
+      when Net::HTTPRedirection then
+        new_url = response['location']
+        profile_url(new_url)
+      end
     end
   end
 end
