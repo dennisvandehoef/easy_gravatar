@@ -3,8 +3,6 @@ require 'json'
 module EasyGravatar
   class JsonParser
 
-#    attr_accessor :json
-
     def self.for(json)
       new json
     end
@@ -17,6 +15,7 @@ module EasyGravatar
       hash = strip_basic_fields
       hash.merge! strip_name_data
       hash.merge! strip_ims
+      hash.merge! strip_profileBackground
       hash.merge! strip_phoneNumbers
       hash.merge! strip_currency
     end
@@ -55,6 +54,13 @@ module EasyGravatar
         new_key = "#{key}Name" if key == 'formatted'
         hash[new_key.to_sym] = @json['name'][key]
       end
+      hash
+    end
+
+    def strip_profileBackground
+      hash = Hash.new
+      return hash unless @json['profileBackground']
+      hash[:profileBackgroundColor] = @json['profileBackground']['color']
       hash
     end
 
