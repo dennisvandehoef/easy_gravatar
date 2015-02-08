@@ -34,8 +34,8 @@ describe EasyGravatar::JsonParser do
     expect(@parsed[:ims][:skype]).to eq('fakeSkype')
   end
 
-  it 'adds the email to the first layer' do
-    expect(@parsed[:email]).to eq('foo@bar.com')
+  it 'parses the email adresses to an array' do
+    expect(@parsed[:email][0]).to eq('foo@bar.com')
   end
 
   it 'reorganises the currencies' do
