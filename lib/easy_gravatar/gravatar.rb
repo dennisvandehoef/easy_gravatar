@@ -19,6 +19,7 @@ module EasyGravatar
       get_value :formattedName
     end
 
+    private
 
     def get_hash
       Net::HTTP.get(URI.parse(profile_url))
