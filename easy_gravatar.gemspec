@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["dennisvdhoef@gmail.com"]
   spec.summary       = %q{A simple gem that gives you -all- the data avalabile for the user on gravatar.com}
   spec.description   = %q{Gravatar.com, mainly known for its avatar hosting. But users can store more than only an avatar at gravatar. This gem also allows you to easily access it all (accounts at other social networks, more photo's, the name of the user, saved websites, cryptocurrency accounts and more)}
-  spec.homepage      = ""
+  spec.homepage      = "http://hoefweb.nl/ruby/easy_gravatar/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
