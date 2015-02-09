@@ -23,12 +23,6 @@ module EasyGravatar
       "#{get_value(:thumbnailUrl)}?w=#{width}"
     end
 
-    private
-
-    def get_hash
-      Net::HTTP.get(URI.parse(profile_url))
-    end
-
     def get_value(key, subkey = nil)
       return '' unless hash[key]
       return '' if subkey and !hash[key][subkey]
@@ -36,6 +30,12 @@ module EasyGravatar
       return hash[key][subkey] if subkey
 
       hash[key]
+    end
+
+    private
+
+    def get_hash
+      Net::HTTP.get(URI.parse(profile_url))
     end
 
     def profile_url(url = "https://www.gravatar.com/#{@md5}.json")
