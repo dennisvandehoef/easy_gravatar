@@ -4,6 +4,8 @@ Gravatar.com, mainly known for its avatar hosting. But users can store more than
 
 This gem also allows you to easily access it all (accounts at other social networks, more photo's, the name of the user, saved websites, cryptocurrency accounts and more)
 
+[![Gem Version](https://badge.fury.io/rb/easy_gravatar.svg)](http://badge.fury.io/rb/easy_gravatar)
+
 ## Installation
 
 Add this line to your application's Gemfile:
