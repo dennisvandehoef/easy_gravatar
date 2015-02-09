@@ -19,6 +19,10 @@ module EasyGravatar
       get_value :formattedName
     end
 
+    def avatar(width = 80)
+      "#{get_value(:thumbnailUrl)}?w=#{width}"
+    end
+
     private
 
     def get_hash
